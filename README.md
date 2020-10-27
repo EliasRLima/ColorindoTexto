@@ -1,5 +1,5 @@
 # ColorindoTexto
- Projeto de editor de texto em que certas palavras são coloridas automaticamente.</br>
+ Projeto de editor de texto em javaFx em que certas palavras são coloridas automaticamente.</br>
  </br></br></br>
  Classificação:</br>
  -Palavras reservadas -> em azul(#44aaf2) </br>
