@@ -52,8 +52,6 @@ public class ControllerPrincipal implements Initializable{
 	                int finalDaLinha = texto.getText().indexOf("\n",texto.getCaretPosition()); //se == -1 é a ultima
 	                int comecoDaLinhaAnt = 0;
 	                
-	                System.out.println("Comeco: " + comecoDaLinha + " Final: " + finalDaLinha);
-	                
 	                if(finalDaLinha == -1 && comecoDaLinha != -1)
 	                	texto = colorirArea(texto,comecoDaLinha+1);
 	                else if(finalDaLinha == -1 && comecoDaLinha == -1)
