@@ -13,7 +13,7 @@ Colorindo baseado em:
   -Tabs
   
 Sobre o projeto:
-1 -> Execute a classe Inicial.java para iniciar o projeto.
+1 -> Execute a classe Inicial.java para iniciar o projeto. </br>
 2 -> Para alterar o esquema de cores basta alterar o arquivo txt.css
 3 -> Para adicionar palavras coloque nos Arrays do FXMaster.Java
 4 -> Para adicionar novos tipos, coloque o getArray desse tipo na FXMaster e adicione em o IF a verficação para esse Array. Lembre de criar uma cor na txt.css e chamar na hora de colorir
@@ -29,3 +29,4 @@ Baixe a mais atualizada, deixarei ao lado a versão que utilizei durante o desen
   -wellbehavedfx (foi usada a versão 0.3.3) -> https://github.com/FXMisc/WellBehavedFX
   
   
+
