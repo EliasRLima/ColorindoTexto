@@ -1,0 +1,36 @@
+.lineno{
+   -fx-background-color: #1a1a1a;
+   -fx-font-size: 24;
+}
+
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.texto { 
+    -fx-fill: #ed3232; 
+}
+
+.reservadas{
+    -fx-fill: #44aaf2;
+}
+
+.variaveis{
+	-fx-fill: black; 
+}
+
+.constantes{
+    -fx-fill: #0BD69D;
+}
+
+.tipos{
+    -fx-fill: orange;
+}
+
+.marcador{
+    -fx-fill: lime;
+}
+
+.comentario{
+	-fx-fill: #aeb5b1;
+}
