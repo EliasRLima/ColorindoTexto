@@ -10,10 +10,13 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.StyleClassedTextArea;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 
@@ -34,13 +37,72 @@ public class ControllerPrincipal implements Initializable{
 		texto.setWrapText(true);
 		texto.setLineHighlighterOn(true);
 		texto.setStyle("-fx-font-size: 24; -fx-font-weight: bold;-fx-border-color: #1a1a1a");
-
-
+		
 		texto.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			@Override
 	        public void handle(KeyEvent ke){
 				
-	            if( ke.getText().equals(";") ||
+				KeyCombination combintation = new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_ANY);
+	            if (combintation.match(ke)) {
+	        		
+	        		int in = 0, out = 0;
+	        		String[] palavras = FXMaster.getReservadasNoSplit();
+	        		for(int loop = 0; loop < palavras.length; loop++) {
+	        			do {
+	        				in = texto.getText().indexOf(palavras[loop], in);
+	        				if(in != -1) {
+	        					texto.setStyleClass(in, in+palavras[loop].length(), "reservadas");
+		        				in += palavras[loop].length();
+	        				}
+	        				
+	        			}while(in != -1);
+	        			in = 0;
+	        		}
+	        		
+	        		palavras = FXMaster.getTiposNoSplit();
+	        		for(int loop = 0; loop < palavras.length; loop++) {
+	        			do {
+	        				in = texto.getText().indexOf(palavras[loop], in);
+	        				if(in != -1) {
+	        					texto.setStyleClass(in, in+palavras[loop].length(), "tipos");
+	        					in += palavras[loop].length();
+	        				}
+	        				
+	        			}while(in != -1);
+	        			in = 0;
+	        		}
+	        		
+	        		int inString = texto.getText().indexOf('"');
+        			int outString;
+	        		while(inString != -1) {
+	        			outString = texto.getText().indexOf('"',inString+1);
+	        			if(outString >= 0) {
+	        				texto.setStyleClass(inString, outString+1, "texto");
+	        				inString = texto.getText().indexOf('"',outString+1);
+	        				continue;
+	        			}else {
+	        				texto.setStyleClass(inString, inString, "texto");
+	        			}
+	        			inString = texto.getText().indexOf('"',inString+1);
+	        		}
+	        		
+	        		inString = texto.getText().indexOf("'");
+	        		while(inString != -1) {
+	        			outString = texto.getText().indexOf("'",inString+1);
+	        			if(outString >= 0) {
+	        				texto.setStyleClass(inString, outString+1, "texto");
+	        				inString = texto.getText().indexOf("'",outString+1);
+	        				continue;
+	        			}else {
+	        				texto.setStyleClass(inString, inString, "texto");
+	        			}
+	        			inString = texto.getText().indexOf("'",inString+1);
+	         			
+	        		}
+	        		
+	        	}
+				
+	            else if( ke.getText().equals(";") ||
 	            	ke.getText().equals(".") ||
 	            	ke.getCode().equals(KeyCode.ENTER) || 
 	            	ke.getCode().equals(KeyCode.BACK_SPACE) || 
@@ -69,6 +131,9 @@ public class ControllerPrincipal implements Initializable{
 	                		texto = colorirArea(texto,comecoDaLinhaAnt,comecoDaLinha);
 	                }
 	            }
+	            
+	            
+	            
 	        }
 		});
 		
@@ -117,9 +182,19 @@ public class ControllerPrincipal implements Initializable{
 				}
 			}
 		
-		if(texto.indexOf("\"") >= 0) {
-			int inString = texto.indexOf("\"");
-			int outString = texto.indexOf("\"",inString+1);
+		if(texto.indexOf('"') >= 0) {
+			int inString = texto.indexOf('"');
+			int outString = texto.indexOf('"',inString+1);
+			if(outString >= 0) {
+				area.setStyleClass(in+inString, in+outString+1, "texto");
+			}else {
+				area.setStyleClass(in+inString, in+inString, "texto");
+			}
+		}
+		
+		if(texto.indexOf("'") >= 0) {
+			int inString = texto.indexOf("'");
+			int outString = texto.indexOf("'",inString+1);
 			if(outString >= 0) {
 				area.setStyleClass(in+inString, in+outString+1, "texto");
 			}else {
