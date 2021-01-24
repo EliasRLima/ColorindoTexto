@@ -1,18 +1,19 @@
 # ColorindoTexto
- Projeto de editor de texto, em javaFx, onde certas palavras são coloridas automaticamente.</br>
+ Projeto de editor de texto, em javaFx, onde o texto é colorido durante a digitação.</br>
  </br></br></br>
- Classificação:</br>
+O texto usa um arquivo css para colorir o texto. Configurações atuais do css:</br>
  -Palavras reservadas -> em azul(#44aaf2) </br>
--Tipos -> em laranja(#ffa500)</br>
--Strings -> em vermelho(#ed3232)</br>
+ -Tipos -> em laranja(#ffa500)</br>
+ -Strings -> em vermelho(#ed3232)</br>
 </br></br></br>
-Colorindo baseado em:</br>
+O algoritmo usa eventos para colorir, são eles:</br>
   -Enters</br>
   -Deletes</br>
   -Pontos</br>
   -Tabs</br>
   </br></br></br>
-Sobre o projeto:</br>
+  
+Manual para usar o projeto:</br>
 1 -> Execute a classe Inicial.java para iniciar o projeto. </br>
 2 -> Para alterar o esquema de cores basta alterar o arquivo txt.css</br>
 3 -> Para adicionar palavras coloque nos Arrays do FXMaster.Java</br>
